@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+@model CareerProject.Models.DTO.tbl_Company
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">Edit Company</div>
+            <hr>
+            <form action="@Url.Action("Edit", "Company")" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="ID" value="@ViewBag.info.ID" />
+
+                <div class="form-group">
+                    <label for="name">Company Name</label>
+                    <input type="text" class="form-control form-control-rounded" id="name" name="name"
+                           value="@ViewBag.info.Name" placeholder="Enter company name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control form-control-rounded" id="description" name="description"
+                              placeholder="Enter company description">@ViewBag.info.Description</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="avt">Company Avatar</label>
+                    <input type="file" class="form-control form-control-rounded" id="avt" name="avt">
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="text" class="form-control form-control-rounded" id="phoneNumber" name="phoneNumber"
+                           value="@ViewBag.info.PhoneNumber" placeholder="Enter phone number">
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" class="form-control form-control-rounded" id="location" name="location"
+                           value="@ViewBag.info.Location" placeholder="Enter company location">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control form-control-rounded" id="email" name="email"
+                           value="@ViewBag.info.Email" placeholder="Enter company email">
+                </div>
+
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-light btn-round px-5"><i class="icon-lock"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    CKEDITOR.replace('Description');
+</script>

@@ -1,0 +1,246 @@
+﻿
+@{
+    ViewBag.Title = "JobDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<main>
+
+    <!-- Hero Area Start-->
+    <div class="slider-area ">
+        <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/about.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>@ViewBag.jobDetail.tbl_Category.Name</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Area End -->
+    <!-- job post company Start -->
+    <div class="job-post-company pt-120 pb-120">
+        <div class="container">
+            <div class="row justify-content-between">
+                <!-- Left Content -->
+                <div class="col-xl-7 col-lg-8">
+                    <!-- job single -->
+                    <div class="single-job-items mb-50">
+                        <div class="job-items">
+                            <div class="company-img company-img-details">
+                                <a href="#"><img src="~/Img/@ViewBag.jobDetail.tbl_Company.Avt" alt="" style="width:100px; height:100px"></a>
+                            </div>
+                            <div class="job-tittle">
+                                <a href="#">
+                                    <h4>@ViewBag.jobDetail.Name</h4>
+                                </a>
+                                <ul>
+                                    <li>@ViewBag.jobDetail.tbl_Company.Name</li>
+                                    <li><i class="fas fa-map-marker-alt"></i>@ViewBag.jobDetail.Location</li>
+                                    <li>@ViewBag.jobDetail.Offer</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- job single End -->
+
+                    <div class="job-post-details">
+                        <div class="post-details1 mb-50">
+                            <!-- Small Section Tittle -->
+                            <div class="small-section-tittle">
+                                <h4>Job Description</h4>
+                            </div>
+                            <div>
+                                @Html.Raw(ViewBag.jobDetail.Description)
+                            </div>
+                        </div>
+                        <div class="post-details2  mb-50">
+                            <!-- Small Section Tittle -->
+                            <div class="small-section-tittle">
+                                <h4>Required Knowledge, Skills, and Abilities</h4>
+                            </div>
+                            <div>
+                                @Html.Raw(ViewBag.jobDetail.Requirement)
+                            </div>
+                        </div>
+                        <div class="post-details2  mb-50">
+                            <!-- Small Section Tittle -->
+                            <div class="small-section-tittle">
+                                <h4>Benefit</h4>
+                            </div>
+                            <div>
+                                @Html.Raw(ViewBag.jobDetail.Benefit)
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Right Content -->
+                <div class="col-xl-4 col-lg-4">
+                    <div class="post-details3  mb-50">
+                        <!-- Small Section Tittle -->
+                        <div class="small-section-tittle">
+                            <h4>Job Overview</h4>
+                        </div>
+                        <ul>
+                            <li>Posted date : <span>@ViewBag.jobDetail.CreationDate</span></li>
+                            <li>Location : <span>@ViewBag.jobDetail.Location</span></li>
+                            <li>Vacancy : <span>@ViewBag.jobDetail.Total</span></li>
+                            <li>Job nature : <span>@ViewBag.jobDetail.Type</span></li>
+                            <li>
+                                Salary : @if (ViewBag.jobDetail.Offer == 0)
+                                {
+
+
+                                    <span>Thỏa thuận</span>
+                                }
+                                else
+                                {
+                                    <span>ViewBag.jobDetail.Offer</span>
+                                }
+                            </li>
+                            <li>Limit date : <span>@ViewBag.jobDetail.LimitDate</span></li>
+                        </ul>
+                        @if (ViewBag.countApplied == 0)
+                        {
+                            <div class="apply-btn2">
+                                <a href="#" class="btn" data-toggle="modal" data-target="#exampleModal">Apply Now</a>
+                            </div>
+                        }
+                        else if (ViewBag.countApplied == 1)
+                        {
+
+
+                            <div class="apply-btn2">
+                                <a href="#" class="btn" data-toggle="modal" data-target="#exampleModal">Apply Again</a>
+                            </div>
+                        }
+                        else
+                        {
+
+                            <div class="footer" style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+
+                                <label class="submit-btn" value="Apply" disabled type="submit" style=" padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;" >Applied</label>
+                            </div>
+                        }
+
+                    </div>
+                    <div class="post-details4  mb-50">
+                        <!-- Small Section Tittle -->
+                        <div class="small-section-tittle">
+                            <h4>Company Information</h4>
+                        </div>
+                        <span>@ViewBag.jobDetail.tbl_Company.Name</span>
+                        <p>
+
+                            @ViewBag.jobDetail.tbl_Company.Description
+                        </p>
+                        <ul>
+                            <li>Name: <span>@ViewBag.jobDetail.tbl_Company.Name </span></li>
+                            <li>Email: <span>@ViewBag.jobDetail.tbl_Company.Email</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" style="margin-top:100px" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="container" style="max-width: 600px; background-color: #fff; padding: 20px; margin: auto; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);">
+                    <h1 style="font-size: 24px; color: #2C8540; margin-bottom: 20px;">@ViewBag.jobDetail.Name</h1>
+
+                    <form action="@Url.Action("Apply", "Job")" method="POST" class="cs-form" enctype="multipart/form-data">
+                        <div class="form-section">
+                            <h2 style="margin-bottom: 10px;">Choose CV to apply</h2>
+                            <div class="cv-option" style="margin-bottom: 15px;">
+                                <input type="radio" id="chosecv1" name="cv-upload">
+                                <label for="chosecv1">Select CV from your library</label>
+
+                                <fieldset style="border:1px #808080 solid; margin-left:20px; padding-left:10px">
+                                    @foreach (var item in ViewBag.cvs)
+                                    {
+                                        <br />
+                                        <input type="radio" id="@item.ID" name="cv" onclick="getDataOldToInput(@item.ID)">
+                                        <label for="@item.ID" id="@item.ID" name="@item.ID">@item.FileCV</label>
+                                    }
+                                </fieldset>
+                            </div>
+                            <input type="text" id="cdId" style="display:none" name="cdId" />
+                            <div class="upload-section" style="margin-bottom: 15px;">
+                                <input type="radio" id="cv-upload" name="cv-upload">
+                                <label for="cv-upload">Upload your CV:</label>
+                                <input type="file" id="cvUpload" name="cvUpload" accept=".doc,.docx,.pdf" style="display: none; margin-top: 10px;">
+                            </div>
+                        </div>
+
+                        <div class="intro-section">
+                            <h5 style="margin-bottom: 10px;">Letter of recommendation:</h5>
+                            <textarea id="letter" name="letter" rows="6" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd; font-size: 14px; resize: none;"> </textarea>
+                        </div>
+                        <div class="footer" style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+
+                            <input class="submit-btn" value="Apply" type="submit" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;" />
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+
+    function toggleFieldset() {
+        var chosecv1 = document.getElementById('chosecv1');
+        var fieldset = document.querySelector('fieldset');
+        var cv = document.getElementById("cdId");
+
+        if (chosecv1.checked) {
+            fieldset.style.display = 'block'; // Show fieldset
+            const fileInput = document.getElementById('cvUpload');
+            fileInput.setAttribute("style", "display: none;");
+        } else {
+            fieldset.style.display = 'none'; // Hide fieldset
+            const fileInput = document.getElementById('cvUpload');
+            fileInput.setAttribute("style", "display: block;");
+            resetFieldsetRadios(); // Reset all radio buttons inside the fieldset
+        }
+    }
+
+    // Function to reset (uncheck) all radio buttons inside the fieldset
+    function resetFieldsetRadios() {
+        var radios = document.querySelectorAll('fieldset input[type="radio"]');
+        radios.forEach(function (radio) {
+            radio.checked = false;
+            cv.value = '';
+        });
+    }
+
+    // Add event listener to #chosecv1 to detect change
+    document.getElementById('chosecv1').addEventListener('change', toggleFieldset);
+
+    // Add event listener to #cv-upload to hide fieldset if file upload option is selected
+    document.getElementById('cv-upload').addEventListener('change', toggleFieldset);
+
+    // Initially hide fieldset on page load
+    window.onload = function () {
+        toggleFieldset(); // Call function to hide fieldset initially
+    };</script>
+
+<script>
+    function getDataOldToInput(item) {
+        //alert(item);
+        var cv = document.getElementById("cdId");
+
+        cv.value = item;
+    }
+</script>

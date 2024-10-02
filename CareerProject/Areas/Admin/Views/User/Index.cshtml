@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+    var session = Session["USER_SESSION"] as CareerProject.Common.UserLogin;
+
+}
+
+
+<h2>User List</h2>
+<a href="@Url.Action("Add", "User")" class="btn btn-success m-2">Add New</a>
+
+<table id="example" class="table table-striped table-bordered" style="width: 100%; border: 1px solid white;">
+    <thead>
+        <tr>
+            <th scope="col">User ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Major</th>
+            <th scope="col">Job City</th>
+            <th scope="col">Profile</th>
+            <th scope="col">Skills</th>
+            <th scope="col">Expected Salary</th>
+            <th scope="col">Experiences</th>
+            <th scope="col">Position</th>
+            <th scope="col">Email</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.users)
+        {
+            <tr>
+                <th scope="row">@item.ID</th>
+                <td>@item.Name</td>
+                <td>@item.DoB.ToShortDateString()</td>
+                <td>@item.Major</td>
+                <td>@item.JobCity</td>
+                <td>@item.ProfileUser</td>
+                <td>@item.Skill</td>
+                <td>@item.Expected</td>
+                <td>@item.Experiences</td>
+                <td>@item.Position</td>
+                <td>@item.Email</td>
+                <td>
+                    @*<a href="@Url.Action("Edit", "User", new { id = item.ID })" class="btn btn-light btn-round px-5"><i class="icon-pencil"></i> Edit</a>*@
+                    <button onclick="removeUser(@item.ID)" class="btn btn-sm btn-danger px-5">DELETE</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>function removeUser(id) {
+        if (confirm("Are you sure you want to delete the user with ID " + id + "?")) {
+            $.get("/User/Remove", { id: id }, function (data) {
+                if (data) {
+                    alert("User has been deleted");
+                    location.reload();
+                } else {
+                    alert("Error deleting user");
+                }
+            });
+        }
+    }</script>

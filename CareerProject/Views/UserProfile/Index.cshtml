@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CareerProject.Models.DTO.tbl_User
+<script src="~/ckeditor/ckeditor.js"></script>
+
+<div class="container rounded bg-white mt-5 mb-5" style="border:1px #808080 solid">
+    <div class="row">
+
+        <form style="display:flex" action="@Url.Action("UpdateProfile", "UserProfile")" method="POST" class="cs-form" enctype="multipart/form-data">
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile Settings</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+                            <label class="labels">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="first name" value="@ViewBag.listUser.Name">
+                        </div>
+
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label class="labels">Email</label>
+                            <input type="text" id="email" name="email" class="form-control" placeholder="enter Email" value="@ViewBag.listUser.Email">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">JobCity</label>
+                            <input type="text" id="jobCity" name="jobCity" class="form-control" placeholder="enter JobCity" value="@ViewBag.listUser.JobCity">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Date Of Birth</label>
+                            <input type="text" id="dob" name="dob" class="form-control" value="@ViewBag.listUser.DoB.ToString("MM/dd/yyyy")">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Major</label>
+                            <input type="text" class="form-control" id="major" name="major" placeholder="enter Major" value="@ViewBag.listUser.Major">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Skill</label>
+                            <input type="text" id="skill" name="skill" class="form-control" placeholder="enter skill" value="@ViewBag.listUser.Skill">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Expected</label>
+                            <input type="number" id="expected" name="expected" class="form-control" placeholder="enter Expected" value="@ViewBag.listUser.Expected">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Position</label>
+                            <input type="text" id="position" name="position" class="form-control" placeholder="enter Position" value="@ViewBag.listUser.Position">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Experience</label>
+                            <input type="text" class="form-control" id="experiences" name="experiences" placeholder="enter Position" value="@ViewBag.listUser.Experiences">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="p-3 py-5">
+                    <div class="col-md-12">
+                        <label class="labels">Profile</label>
+                        @Html.TextAreaFor(model => model.ProfileUser, new { htmlAttributes = new { @class = "form-control", @id = "ProfileUser" } })
+                        @Html.ValidationMessageFor(model => model.ProfileUser, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="mt-5 text-center"><input class="btn btn-primary profile-button" type="submit" value="Save Profile" /></div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    CKEDITOR.replace('ProfileUser');
+</script>
+
+<style type="text/css">
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #BA68C8
+    }
+
+    .profile-button {
+        background: rgb(99, 39, 120);
+        box-shadow: none;
+        border: none
+    }
+
+        .profile-button:hover {
+            background: #682773
+        }
+
+        .profile-button:focus {
+            background: #682773;
+            box-shadow: none
+        }
+
+        .profile-button:active {
+            background: #682773;
+            box-shadow: none
+        }
+
+    .back:hover {
+        color: #682773;
+        cursor: pointer
+    }
+
+    .labels {
+        font-size: 11px
+    }
+
+    .add-experience:hover {
+        background: #BA68C8;
+        color: #fff;
+        cursor: pointer;
+        border: solid 1px #BA68C8
+    }
+</style>

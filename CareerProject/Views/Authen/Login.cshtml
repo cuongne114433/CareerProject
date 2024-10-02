@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="cs-body">
+    <div class="cs-container">
+        <h2>Đăng Nhập</h2>
+        <p>Cùng xây dựng một hồ sơ nổi bật và nhận được các cơ hội sự nghiệp lý tưởng</p>
+
+        <form action="@Url.Action("Login", "Authen")" method="POST" class="cs-form">
+
+            <!-- Email -->
+            <div class="cs-input-group">
+                <label for="email" class="cs-label">
+                    <i class="cs-icon email-icon"></i> Email
+                </label>
+                <input type="email" id="email" name="email" class="cs-input" placeholder="Nhập email" required>
+            </div>
+
+            <!-- Password -->
+            <div class="cs-input-group">
+                <label for="password" class="cs-label">
+                    <i class="cs-icon password-icon"></i> Mật khẩu
+                </label>
+                <input type="password" id="password" name="password" class="cs-input" placeholder="Nhập mật khẩu" required>
+                <i class="cs-icon toggle-password"></i>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="cs-input-group">
+                <label for="confirmPassword" class="cs-label">
+                    <i class="cs-icon confirm-password-icon"></i> Xác nhận mật khẩu
+                </label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="cs-input" placeholder="Nhập lại mật khẩu" required>
+                <i class="cs-icon toggle-password"></i>
+            </div>
+
+            <!-- Terms & Conditions Checkbox -->
+            <div class="cs-input-group">
+                <label>
+                    <input type="checkbox" name="company" id="company"> Tôi là nhà tuyển dụng
+                </label>
+            </div>
+
+            <!-- Register Button -->
+            <div class="cs-input-group">
+                <button type="submit" class="cs-submit-btn">Đăng Nhập</button>
+            </div>
+            <div class="cs-input-group">
+                <a  class="cs-submit-btn">Đăng Ký</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+

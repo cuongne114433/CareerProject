@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>Job Applications</h2>
+
+<table id="example" class="table table-striped table-bordered" style="width: 100%; border: 1px solid white;">
+    <thead>
+        <tr>
+            <th scope="col">Application ID</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Job Title</th>
+            <th scope="col">Applied Date</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">CV</th>
+            <th scope="col">Cover Letter</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.applyJobs)
+        {
+            <tr>
+                <th scope="row">@item.applyJob.ID</th>
+                <td>@item.applyJob.tbl_User.Name</td>
+                <td>@item.applyJob.tbl_Job.Name</td>
+                <td>@item.applyJob.AppliedDate.ToShortDateString()</td>
+                <td>@item.applyJob.Name</td>
+                <td>@item.applyJob.Mail</td>
+                <td>@item.FileCV</td>
+                <td>@item.applyJob.CoverLetter</td>
+                <td>@item.applyJob.ApplyStatus</td>
+                <td>
+                    <a href="~/CV/@item.FileCV" target="_blank" class="btn btn-light btn-round px-5"><i class="icon-pencil"></i> View CV</a>
+                    <button onclick="interested(@item.applyJob.ID)" class="btn btn-sm btn-danger px-5">Interested</button>
+                    <button onclick="reject(@item.applyJob.ID)" class="btn btn-sm btn-danger px-5">Reject</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function removeApplyJob(item) {
+        if (confirm("Are you sure you want to delete the application with ID " + item + "?") == true) {
+            $.get("/Apply/Remove", { id: item }, function (data) {
+                if (data) {
+                    alert("Application has been deleted");
+                    location.reload();
+                } else {
+                    alert("Failed to delete the application");
+                }
+            });
+        }
+    }
+    function interested(item) {
+        if (confirm("Are you sure you interested CV " + item + "?") == true) {
+            $.get("/Apply/Interested", { id: item }, function (data) {
+                if (data) {
+                    alert("CV has been interested");
+                    location.reload();
+                } else {
+                    alert("Failed to interested the CV");
+                }
+            });
+        }
+    }
+
+    function reject(item) {
+        if (confirm("Are you sure you Reject CV " + item + "?") == true) {
+            $.get("/Apply/Reject", { id: item }, function (data) {
+                if (data) {
+                    alert("CV has been Rejected");
+                    location.reload();
+                } else {
+                    alert("Failed to Reject the CV");
+                }
+            });
+        }
+    }
+</script>

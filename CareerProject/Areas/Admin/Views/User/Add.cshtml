@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+
+<script src="~/ckeditor/ckeditor.js"></script>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">Add New User</div>
+            <hr>
+            <form action="@Url.Action("Add", "User")" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="input-1">Name</label>
+                    <input type="text" class="form-control form-control-rounded" name="Name" id="Name"
+                           placeholder="Enter user's name">
+                </div>
+
+                <div class="form-group">
+                    <label for="input-2">Date of Birth</label>
+                    <input type="date" class="form-control form-control-rounded" name="DoB" id="DoB">
+                </div>
+
+                <div class="form-group">
+                    <label for="input-3">Major</label>
+                    <textarea class="form-control form-control-rounded" name="Major" id="Major"
+                              placeholder="Enter user's major"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-4">Job City</label>
+                    <textarea class="form-control form-control-rounded" name="JobCity" id="JobCity"
+                              placeholder="Enter job city"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-5">Profile</label>
+                    <textarea class="form-control form-control-rounded" name="ProfileUser" id="ProfileUser"
+                              placeholder="Enter user's profile"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-6">Skills</label>
+                    <textarea class="form-control form-control-rounded" name="Skill" id="Skill"
+                              placeholder="Enter user's skills"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-7">Expected Salary</label>
+                    <input type="number" class="form-control form-control-rounded" name="Expected" id="Expected"
+                           placeholder="Enter expected salary" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label for="input-8">Experiences</label>
+                    <input type="number" class="form-control form-control-rounded" name="Experiences" id="Experiences"
+                           placeholder="Enter number of years of experience">
+                </div>
+
+                <div class="form-group">
+                    <label for="input-9">Position</label>
+                    <input type="text" class="form-control form-control-rounded" name="Position" id="Position"
+                           placeholder="Enter desired job position">
+                </div>
+
+                <div class="form-group">
+                    <label for="input-10">Email</label>
+                    <input type="email" class="form-control form-control-rounded" name="Email" id="Email"
+                           placeholder="Enter email address">
+                </div>
+
+                <div class="form-group">
+                    <label for="input-11">Password</label>
+                    <input type="password" class="form-control form-control-rounded" name="PassWord" id="PassWord"
+                           placeholder="Enter password">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-light btn-round px-5"><i class="icon-lock"></i> Add User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>// Initialize any JavaScript libraries or plugins if needed
+    // For example, CKEditor for rich text fields</script>

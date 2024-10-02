@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="cs-body">
+    <div class="cs-container">
+        <h2>Đăng Ký</h2>
+        <p>Cùng xây dựng một hồ sơ nổi bật và nhận được các cơ hội sự nghiệp lý tưởng</p>
+
+        <form action="@Url.Action("SignUp", "Authen")" enctype="multipart/form-data" method="POST" class="cs-form">
+            <!-- Name -->
+            <div class="cs-input-group">
+                <label for="name" class="cs-label">
+                    <i class="cs-icon user-icon"></i> Họ và tên
+                </label>
+                <input type="text" id="name" name="name" class="cs-input" placeholder="Nhập họ tên" required>
+            </div>
+
+            <!-- DoB -->
+            <div class="cs-input-group">
+                <label for="dob" class="cs-label">
+                    <i class="cs-icon date-icon"></i> Ngày sinh
+                </label>
+                <input type="date" id="dob" name="dob" class="cs-input" placeholder="Nhập ngày sinh" required>
+            </div>
+
+            <!-- Major -->
+            <div class="cs-input-group">
+                <label for="major" class="cs-label">
+                    <i class="cs-icon major-icon"></i> Chuyên ngành
+                </label>
+                <input type="text" id="major" name="major" class="cs-input" placeholder="Công nghệ thông tin, Luật..." required>
+            </div>
+
+            <!-- Job City -->
+            <div class="cs-input-group">
+                <label for="jobCity" class="cs-label">
+                    <i class="cs-icon jobcity-icon"></i> Thành phố công việc
+                </label>
+                <input type="text" id="jobCity" name="jobCity" class="cs-input" placeholder="Nhập thành phố công việc( HCM, Cần Thơ, Đà Nẵng)" required>
+            </div>
+
+            <!-- ProfileUser -->
+            <div class="cs-input-group">
+                <label for="profileUser" class="cs-label">
+                    <i class="cs-icon profile-icon"></i> Hồ sơ cá nhân
+                </label>
+                <textarea id="profileUser" name="profileUser" class="cs-input" placeholder="Nhập hồ sơ cá nhân" required></textarea>
+            </div>
+
+            <!-- Skills -->
+            <div class="cs-input-group">
+                <label for="skill" class="cs-label">
+                    <i class="cs-icon skill-icon"></i> Kỹ năng
+                </label>
+                <input type="text" id="skill" name="skill" class="cs-input" placeholder="Nhập kỹ năng(Java, C#, HTML...)" required>
+            </div>
+
+            <!-- Expected Salary -->
+            <div class="cs-input-group">
+                <label for="expected" class="cs-label">
+                    <i class="cs-icon salary-icon"></i> Lương mong muốn
+                </label>
+                <input type="number" step="0.01" id="expected" name="expected" class="cs-input" placeholder="Nhập lương mong muốn" required>
+            </div>
+
+            <!-- Experiences -->
+            <div class="cs-input-group">
+                <label for="experiences" class="cs-label">
+                    <i class="cs-icon experience-icon"></i> Số năm kinh nghiệm
+                </label>
+                <input type="number" id="experiences" name="experiences" class="cs-input" placeholder="Nhập số năm kinh nghiệm" required>
+            </div>
+
+            <!-- Position -->
+            <div class="cs-input-group">
+                <label for="position" class="cs-label">
+                    <i class="cs-icon position-icon"></i> Vị trí công việc
+                </label>
+                <input type="text" id="position" name="position" class="cs-input" placeholder="Nhập vị trí công việc" required>
+            </div>
+
+            <!-- Email -->
+            <div class="cs-input-group">
+                <label for="email" class="cs-label">
+                    <i class="cs-icon email-icon"></i> Email
+                </label>
+                <input type="email" id="email" name="email" class="cs-input" placeholder="Nhập email" required>
+            </div>
+
+            <!-- Password -->
+            <div class="cs-input-group">
+                <label for="password" class="cs-label">
+                    <i class="cs-icon password-icon"></i> Mật khẩu
+                </label>
+                <input type="password" id="password" name="password" class="cs-input" placeholder="Nhập mật khẩu" required>
+                <i class="cs-icon toggle-password"></i>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="cs-input-group">
+                <label for="confirmPassword" class="cs-label">
+                    <i class="cs-icon confirm-password-icon"></i> Xác nhận mật khẩu
+                </label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="cs-input" placeholder="Nhập lại mật khẩu" required>
+                <i class="cs-icon toggle-password"></i>
+            </div>
+
+            <!-- Terms & Conditions Checkbox -->
+            <div class="cs-input-group">
+                <label>
+                    <input type="checkbox" required> Tôi đã đọc và đồng ý với Điều khoản dịch vụ và Chính sách bảo mật
+                </label>
+            </div>
+
+            <!-- Register Button -->
+            <div class="cs-input-group">
+                <button type="submit" class="cs-submit-btn">Đăng ký</button>
+            </div>
+        </form>
+    </div>
+</div>
