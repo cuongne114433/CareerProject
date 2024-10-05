@@ -67,31 +67,39 @@
 
                                             @if (session != null)
                                             {
-                                                <li><a href="@Url.Action("FindMatchJob", "Home")">Match Job</a></li>
+                                                <li><a href="@Url.Action("FindMatchJob", "Job")">Match Job</a></li>
                                                 <li><a href="@Url.Action("CV", "UserProfile")">CV</a></li>
-                                                <li><a href="@Url.Action("Index", "UserProfile")">Profile</a></li>
                                                 <li><a href="@Url.Action("JobApplied", "UserProfile")">Job Applied</a></li>
+                                                <li><a href="@Url.Action("Index", "UserProfile")">@session.TenKhachHang</a></li>
+                                                <li><a href="@Url.Action("Logout", "Authen")">Đăng Xuất</a></li>
 
                                             }
+
+
                                             @*<li><a href="about.html">About</a></li>
-                                            <li>
-                                                <a href="#">Page</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Elements</a></li>
-                                                    <li><a href="job_details.html">job Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>*@
+        <li>
+            <a href="#">Page</a>
+            <ul class="submenu">
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="single-blog.html">Blog Details</a></li>
+                <li><a href="elements.html">Elements</a></li>
+                <li><a href="job_details.html">job Details</a></li>
+            </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>*@
+
+
                                         </ul>
                                     </nav>
                                 </div>
                                 <!-- Header-btn -->
-                                <div class="header-btn d-none f-right d-lg-block">
-                                    <a href="@Url.Action("SignUp", "Authen")" class="btn head-btn1">Register</a>
-                                    <a href="@Url.Action("Login", "Authen")" class="btn head-btn2">Login</a>
-                                </div>
+                                @if (session == null)
+                                {
+                                    <div class="header-btn d-none f-right d-lg-block">
+                                        <a href="@Url.Action("SignUp", "Authen")" class="btn head-btn1">Register</a>
+                                        <a href="@Url.Action("Login", "Authen")" class="btn head-btn2">Login</a>
+                                    </div>
+                                }
                             </div>
                         </div>
                         <!-- Mobile Menu -->

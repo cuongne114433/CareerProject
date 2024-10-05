@@ -33,7 +33,16 @@
             <tr>
                 <th scope="row">@item.ID</th>
                 <td>@item.Name</td>
-                <td>@item.DoB.ToShortDateString()</td>
+                @if (item.DoB != null)
+                {
+                    <td>@item.DoB.ToShortDateString()</td>
+
+                }
+                else
+                {
+                    <td>@item.DoB</td>
+
+                }
                 <td>@item.Major</td>
                 <td>@item.JobCity</td>
                 <td>@item.ProfileUser</td>
@@ -51,7 +60,8 @@
     </tbody>
 </table>
 
-<script>function removeUser(id) {
+<script>
+    function removeUser(id) {
         if (confirm("Are you sure you want to delete the user with ID " + id + "?")) {
             $.get("/User/Remove", { id: id }, function (data) {
                 if (data) {

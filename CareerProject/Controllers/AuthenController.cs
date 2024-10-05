@@ -14,6 +14,7 @@ namespace CareerProject.Controllers
     {
         // GET: Authen
         AuthenService authenService = new AuthenService();
+        CareerDBContext db = new CareerDBContext();
         public ActionResult Index()
         {
             return View();
@@ -27,6 +28,59 @@ namespace CareerProject.Controllers
         {
             return View();
         }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            Session.Abandon();
+            return View("Login");
+        }
+
+        [HttpPost]
+        public ActionResult GoogleLogin(string name, string email)
+        {
+
+            var isExistAccount = db.tbl_User.Where(x=>x.Email == email).ToList();
+            tbl_User user = new tbl_User();
+
+            if (isExistAccount!=null && isExistAccount.Count() > 0)
+            {
+                var test = db.tbl_User.ToList();
+                var data = db.tbl_User.Where(x => x.Email.ToLower().TrimEnd().Equals(email.ToLower().Trim())).ToList();
+                user = data.First();
+            
+            }
+            else
+            {
+                user = new tbl_User();
+                user.Name = name;
+                user.Email = email;
+                user.Major = "None";
+                db.tbl_User.Add(user);
+                db.SaveChanges();
+            }
+            if (email == "tqninh.work@gmail.com")
+            {
+                var userSession = new UserLogin();
+                userSession.Mail = email;
+                userSession.UserID = 0;
+                userSession.TenKhachHang = "Admin";
+                userSession.Role = "Admin";
+                Session.Add(CommonConstant.USER_SESSION, userSession);
+                return RedirectToAction("Index", "Admin/Apply");
+            }
+            else
+            {
+                var userSession = new UserLogin();
+                userSession.Mail = email;
+                userSession.UserID = user.ID;
+                userSession.TenKhachHang = user.Name;
+                userSession.Role = "User";
+                Session.Add(CommonConstant.USER_SESSION, userSession);
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
         [HttpPost]
         public ActionResult Login(string email, string password, string company)
         {

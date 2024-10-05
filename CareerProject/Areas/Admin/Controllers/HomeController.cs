@@ -13,5 +13,13 @@ namespace CareerProject.Areas.Admin.Controllers
         {
             return View();
         }
+
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            Session.Abandon();
+            return RedirectToAction("Index", "Home", new { area = "" });
+        }
     }
 }

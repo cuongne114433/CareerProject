@@ -1,4 +1,5 @@
 ﻿using CareerProject.Areas.Admin.Models;
+using CareerProject.Common;
 using CareerProject.Models.DTO;
 using System;
 using System.Collections.Generic;
@@ -6,31 +7,35 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using static System.Collections.Specialized.BitVector32;
 
 namespace CareerProject.Controllers
 {
     public class UserProfileController : Controller
     {
-        UserService userService= new UserService();
-        CVService cVService= new CVService();
+        UserService userService = new UserService();
+        CVService cVService = new CVService();
         // GET: UserProfile
+        long idLogin;
         public ActionResult Index()
         {
-            long id = 1;
-            idUser = id;
-            ViewBag.listUser = userService.GetUser(id);
-            return View(userService.GetUser(id));
+            var session = (UserLogin)Session[CommonConstant.USER_SESSION];
+            idLogin = session.UserID;
+            idUser = idLogin;
+            ViewBag.listUser = userService.GetUser(idLogin);
+            return View(userService.GetUser(idLogin));
         }
 
         public ActionResult CV()
         {
-            ViewBag.listCV = cVService.GetAllCV(1);
+            ViewBag.listCV = cVService.GetAllCV(idLogin);
             return View();
         }
 
         public ActionResult JobApplied()
         {
-            ViewBag.listJobApplied = userService.GetListAppliedJob(1);
+            ViewBag.listJobApplied = userService.GetListAppliedJob(idLogin);
             return View();
         }
 
@@ -46,7 +51,7 @@ namespace CareerProject.Controllers
                 byte[] array = ms.GetBuffer();
             }
 
-            if(cVService.AddCV(picPhim, DateTime.Now, 1))
+            if (cVService.AddCV(picPhim, DateTime.Now, idLogin))
             {
                 return RedirectToAction("Index", "UserProfile");
             }
@@ -54,7 +59,7 @@ namespace CareerProject.Controllers
             return View("CV", "UserProfile"); ;
         }
 
-        static long idUser; 
+        static long idUser;
         [ValidateInput(false)]
         [HttpPost]
         public ActionResult UpdateProfile(
