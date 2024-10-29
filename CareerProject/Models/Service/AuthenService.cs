@@ -24,6 +24,7 @@ namespace CareerProject.Models.Service
                 company.Email = email;
                 company.PassWord = passWord;
                 company.Description = decription;
+                company.CreatedDate = DateTime.Now; 
                 db.tbl_Company.Add(company);
                 db.SaveChanges();
                 return true;

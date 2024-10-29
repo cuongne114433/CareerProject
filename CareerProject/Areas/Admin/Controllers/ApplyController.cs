@@ -19,6 +19,15 @@ namespace CareerProject.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var session = (UserLogin)Session[CommonConstant.USER_SESSION];
+
+            List<tbl_ApplyCustom> tbl_ApplyCustoms = service.GetListApplyJob().Where(x => x.applyJob.tbl_Job.tbl_Company.ID == session.UserID && x.applyJob.AppliedDate == DateTime.Now.Date).ToList();
+            ViewBag.countToDay = 0;
+            if (tbl_ApplyCustoms != null && tbl_ApplyCustoms.Count() > 0)
+            {
+                ViewBag.countToDay =  tbl_ApplyCustoms.Count();
+
+            }
+            service.GetListApplyJob().Where(x => x.applyJob.tbl_Job.tbl_Company.ID == session.UserID && x.applyJob.AppliedDate == DateTime.Now.Date).ToList();
             ViewBag.applyJobs = service.GetListApplyJob().Where(x => x.applyJob.tbl_Job.tbl_Company.ID == session.UserID).ToList();
             return View();
         }

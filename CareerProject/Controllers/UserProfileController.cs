@@ -29,6 +29,9 @@ namespace CareerProject.Controllers
 
         public ActionResult CV()
         {
+            var session = (UserLogin)Session[CommonConstant.USER_SESSION];
+            idLogin = session.UserID;
+            idUser = idLogin;
             ViewBag.listCV = cVService.GetAllCV(idLogin);
             return View();
         }
@@ -42,6 +45,9 @@ namespace CareerProject.Controllers
         [HttpPost]
         public ActionResult UploadCV(HttpPostedFileBase cvFile)
         {
+            var session = (UserLogin)Session[CommonConstant.USER_SESSION];
+            idLogin = session.UserID;
+            idUser = idLogin;
             string picPhim = System.IO.Path.GetFileName(cvFile.FileName);
             string pathPhim = System.IO.Path.Combine(Server.MapPath("~/CV"), picPhim);
             cvFile.SaveAs(pathPhim);
@@ -53,7 +59,7 @@ namespace CareerProject.Controllers
 
             if (cVService.AddCV(picPhim, DateTime.Now, idLogin))
             {
-                return RedirectToAction("Index", "UserProfile");
+                return RedirectToAction("CV", "UserProfile");
             }
 
             return View("CV", "UserProfile"); ;

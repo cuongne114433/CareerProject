@@ -306,9 +306,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\%24RL171I6.cs" />
     <Compile Include="Models\DTO\CareerDBContext.cs" />
     <Compile Include="Models\DTO\sysdiagram.cs" />
-    <Compile Include="Models\DTO\tbl_ApplyCustom.cs" />
     <Compile Include="Models\DTO\tbl_ApplyJob.cs" />
     <Compile Include="Models\DTO\tbl_Category.cs" />
     <Compile Include="Models\DTO\tbl_Company.cs" />
@@ -1593,6 +1593,7 @@
     <Content Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Home\AdminIndex.cshtml" />
     <None Include="DataSet1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>

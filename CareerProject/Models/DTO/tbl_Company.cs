@@ -37,6 +37,9 @@ namespace CareerProject.Models.DTO
         [StringLength(100)]
         public string PassWord { get; set; }
 
+        [Column(TypeName = "date")]
+        public DateTime? CreatedDate { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Job> tbl_Job { get; set; }
     }

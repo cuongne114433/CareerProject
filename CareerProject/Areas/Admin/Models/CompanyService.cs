@@ -85,7 +85,8 @@ namespace CareerProject.Areas.Admin.Models
                 {
                     company.Name = name;
                     company.Description = description;
-                    company.Avt = avt;
+                    if(avt!= null) company.Avt = avt;   
+                    
                     company.PhoneNumber = phoneNumber;
                     company.Email = email;
                     company.Location = location;

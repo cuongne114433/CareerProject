@@ -8,7 +8,7 @@ namespace CareerProject.Models.DTO
     public partial class CareerDBContext : DbContext
     {
         public CareerDBContext()
-            : base("name=CareerDBContext1")
+            : base("name=CareerDBContext2")
         {
         }
 

@@ -3,6 +3,7 @@ using CareerProject.Common;
 using CareerProject.Models.DTO;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,6 +22,7 @@ namespace CareerProject.Areas.Admin.Controllers
 
             if (session.Role == "Admin")
             {
+                ViewBag.countToday = service.GetListCompany().Where(x=>x.CreatedDate == DateTime.Now.Date).Count();
                 ViewBag.companies = service.GetListCompany();
 
             }
@@ -62,9 +64,22 @@ namespace CareerProject.Areas.Admin.Controllers
 
         // Edit company (POST)
         [HttpPost]
-        public ActionResult Edit(string name, string description, string avt, string phoneNumber, string email, string location)
+        public ActionResult Edit(string name, string description, HttpPostedFileBase avt, string phoneNumber, string email, string location)
         {
-            if (service.UpdateCompany(idEdit, name, description, avt, phoneNumber, email, location))
+            string picPhim = null;
+            if (avt != null)
+            {
+                picPhim = System.IO.Path.GetFileName(avt.FileName);
+                string pathPhim = System.IO.Path.Combine(Server.MapPath("~/Img"), picPhim);
+                avt.SaveAs(pathPhim);
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    avt.InputStream.CopyTo(ms);
+                    byte[] array = ms.GetBuffer();
+                }
+            }
+            if (service.UpdateCompany(idEdit, name, description, picPhim, phoneNumber, email, location))
             {
                 return RedirectToAction("Index", "Company");
             }

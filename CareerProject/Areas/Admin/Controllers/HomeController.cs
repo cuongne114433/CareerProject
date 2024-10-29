@@ -14,7 +14,10 @@ namespace CareerProject.Areas.Admin.Controllers
             return View();
         }
 
-
+        public ActionResult AdminIndex()
+        {
+            return View();
+        }
         public ActionResult Logout()
         {
             Session.Clear();
