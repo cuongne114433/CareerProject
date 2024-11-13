@@ -95,20 +95,48 @@ namespace CareerProject.Areas.Admin.Models
                 tbl_Job job = db.tbl_Job.Find(id);
                 if (job != null)
                 {
-                    job.Name = name;
-                    job.Detail = detail;
-                    job.Requirement = requirement;
-                    job.Description = description;
-                    job.Benefit = benefit;
-                    job.Offer = Convert.ToDouble(offer);
-                    job.Industry = industry;
-                    job.CreationDate = creationDate;
-                    job.LimitDate = limitDate;
-                    job.Total = total;
-                    job.Type = type;
-                    job.Sex = sex;
-                    job.Location = location;
-                    job.IDCategory = idCategory;
+                    if (name != null)
+                        job.Name = name;
+
+                    if (detail != null)
+                        job.Detail = detail;
+
+                    if (requirement != null)
+                        job.Requirement = requirement;
+
+                    if (description != null)
+                        job.Description = description;
+
+                    if (benefit != null)
+                        job.Benefit = benefit;
+
+                    if (double.TryParse(offer, out double parsedOffer))
+                        job.Offer = parsedOffer;
+
+                    if (industry != null)
+                        job.Industry = industry;
+
+                    if (creationDate != null)
+                        job.CreationDate = creationDate;
+
+                    if (limitDate != null)
+                        job.LimitDate = limitDate;
+
+                    if (total != null)
+                        job.Total = total;
+
+                    if (type != null)
+                        job.Type = type;
+
+                    if (sex != null)
+                        job.Sex = sex;
+
+                    if (location != null)
+                        job.Location = location;
+
+                    if (idCategory != null)
+                        job.IDCategory = idCategory;
+
 
                     db.SaveChanges();
                     return true;

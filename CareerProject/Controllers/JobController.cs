@@ -21,9 +21,13 @@ namespace CareerProject.Controllers
         public ActionResult Index(string search = null)
         {
             List<tbl_Job> jobs = jobService.getListJob();
+            int countJob = 0;
             if (search != null) {
                 jobs = jobs.Where(x=>x.Name.Contains(search) || x.tbl_Company.Name.Contains(search) || x.tbl_Category.Name.Contains(search)).ToList();
+                if(jobs!=null && jobs.Count()>0)
+                    countJob = jobs.Count();
             }
+            ViewBag.countJob = countJob;
             ViewBag.jobs = jobs;
             return View();
         }

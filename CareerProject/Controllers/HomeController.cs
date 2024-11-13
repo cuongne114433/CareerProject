@@ -17,5 +17,10 @@ namespace CareerProject.Controllers
             ViewBag.jobs = jobService.getListJob();
             return View();
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }
