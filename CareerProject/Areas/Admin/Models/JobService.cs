@@ -22,7 +22,7 @@ namespace CareerProject.Areas.Admin.Models
         {
             var user =db.tbl_User.Find(idUser);
 
-            return db.tbl_Job.Where(x=>x.Requirement.Contains(user.Skill) || x.Requirement.Contains(user.Major) && x.Location.Contains(user.JobCity)).ToList();
+            return db.tbl_Job.Where(x=>x.Requirement.Contains(user.Skill) || x.Requirement.Contains(user.Major) || x.Location.Contains(user.JobCity) || x.Offer >= user.Expected || x.Offer <= user.Expected).ToList();
         }
 
         // Get a specific job by ID
