@@ -1,73 +1,175 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "About";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<style type="text/css">
-    /* Reset */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        color: #333;
-    }
-
-    .custom-page-header {
-        background-color: #007bff;
-        color: white;
-        padding: 20px;
-        text-align: center;
-    }
-
-    .custom-page-about-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 40px;
-    }
-
-    .custom-page-content {
-        max-width: 600px;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-        .custom-page-content h2,
-        .custom-page-content h3 {
-            color: #007bff;
-        }
-
-    .custom-page-map-container {
-        width: 100%;
-        max-width: 600px;
-    }
-
-        .custom-page-map-container iframe {
-            border: 0;
-            width: 100%;
-            height: 300px;
-        }
-
-</style>
 <section class="custom-page-about-section">
     <div class="custom-page-content">
-        <h2>Giới Thiệu Đề Tài</h2>
-        <p> Viết ở đây nè.</p>
+        <div class="about-container">
+            <div class="about-header">
+                <h1>Về Chúng Tôi</h1>
+                <p>Chào mừng bạn đến với <strong>WEBSITE TUYỂN DỤNG VÀ TÌM KIẾM VIỆC LÀM</strong> — nền tảng kết nối người tìm việc và nhà tuyển dụng, với mục tiêu tạo ra một không gian tiện lợi, hiệu quả và dễ dàng trong việc tìm kiếm cơ hội nghề nghiệp.</p>
+            </div>
 
-        <h3>Họ Và Tên</h3>
-        <p>...</p>
+            <section class="about-section">
+                <h2>Tầm Nhìn</h2>
+                <p>Chúng tôi hướng đến việc trở thành nền tảng tuyển dụng hàng đầu, không chỉ giúp người tìm việc tìm kiếm cơ hội phù hợp, mà còn hỗ trợ các doanh nghiệp trong việc tìm kiếm nhân lực chất lượng. Chúng tôi cam kết tạo ra một cộng đồng việc làm hiệu quả, nơi mà cả người lao động và nhà tuyển dụng đều có thể dễ dàng kết nối và phát triển.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>Sứ Mệnh</h2>
+                <p>Mục tiêu của chúng tôi là tạo ra một hệ sinh thái tuyển dụng minh bạch, dễ dàng và hiệu quả, từ đó đóng góp vào việc phát triển nền kinh tế và tạo cơ hội nghề nghiệp cho mọi người. Chúng tôi không chỉ là một trang web tuyển dụng, mà là cầu nối giúp bạn tìm kiếm và phát triển sự nghiệp, đồng thời giúp các doanh nghiệp tìm ra nhân tài phù hợp với yêu cầu công việc.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>Cam Kết</h2>
+                <ul>
+                    <li><strong>Đơn giản và dễ sử dụng:</strong> Giao diện thân thiện với người dùng, dễ dàng thao tác cho mọi đối tượng.</li>
+                    <li><strong>Bảo mật cao:</strong> Chúng tôi cam kết bảo mật thông tin cá nhân của bạn, mang lại một môi trường trực tuyến an toàn.</li>
+                    <li><strong>Cập nhật và cải tiến liên tục:</strong> Luôn nỗ lực cải tiến công nghệ và dịch vụ, đảm bảo nền tảng hoạt động ổn định và hiệu quả nhất.</li>
+                </ul>
+            </section>
+
+            <div class="about-footer">
+                <p>Chúng tôi luôn sẵn sàng đồng hành cùng bạn trên hành trình tìm kiếm công việc mơ ước hoặc tìm kiếm nhân sự phù hợp. Hãy bắt đầu ngay hôm nay và cùng chúng tôi xây dựng tương lai nghề nghiệp của bạn!</p>
+            </div>
+        </div>
     </div>
 
     <div class="custom-page-map-container">
-        <h2>Our Location</h2>
+        <h2>Vị Trí Của Chúng Tôi</h2>
         <!-- Google Map Embed -->
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.593249038421!2d105.76915197577682!3d10.050383990057695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a08806135f2ca3%3A0xe079abda21069331!2zNjYvMjU2IMSQLiBOZ3V54buFbiBWxINuIEPhu6ssIEFuIEhvw6AsIE5pbmggS2nhu4F1LCBD4bqnbiBUaMahIDkwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1731504840769!5m2!1svi!2s"
                 width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </section>
+<style type="text/css">
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.about-section ul li strong {
+    font-family: 'Roboto', sans-serif; /* Sử dụng font hiện đại và dễ đọc */
+    font-size: 1.1rem;                /* Tăng kích cỡ chữ một chút */
+    font-weight: 600;                /* Tạo độ dày vừa phải cho chữ in đậm */
+    color: #333;                     /* Giữ màu tối để dễ nhìn */
+    line-height: 1.5;                /* Cải thiện khoảng cách giữa các dòng */
+}
+.about-section p, 
+.about-section ul {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    text-align: justify; /* Căn đều nội dung */
+}
+
+.about-section ul li {
+    text-align: justify; /* Căn đều danh sách */
+}
+/* Header styles */
+.custom-page-header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Main About Section */
+.custom-page-about-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+.custom-page-content {
+    max-width: 900px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* About Container */
+.about-container {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Section Titles */
+.about-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.about-header p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* About Sections */
+.about-section {
+    margin-bottom: 30px;
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.about-section p, .about-section ul {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* List Style */
+.about-section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.about-section ul li {
+    margin-bottom: 15px;
+}
+
+/* Footer styles */
+.about-footer {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+    padding-top: 20px;
+    border-top: 2px solid #007bff;
+    margin-top: 40px;
+}
+
+/* Map Section */
+.custom-page-map-container {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 40px;
+}
+
+.custom-page-map-container iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 8px;
+}
+
+</style>

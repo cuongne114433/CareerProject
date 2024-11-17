@@ -23,10 +23,11 @@ namespace CareerProject.Controllers
             List<tbl_Job> jobs = jobService.getListJob();
             int countJob = 0;
             if (search != null) {
-                jobs = jobs.Where(x=>x.Name.Contains(search) || x.tbl_Company.Name.Contains(search) || x.tbl_Category.Name.Contains(search)).ToList();
-                if(jobs!=null && jobs.Count()>0)
-                    countJob = jobs.Count();
+                jobs = jobs.Where(x=>x.Name.ToLower().Contains(search.ToLower()) || x.tbl_Company.Name.ToLower().Contains(search.ToLower()) || x.tbl_Category.Name.ToLower().Contains(search.ToLower())).ToList();
+               
             }
+            if (jobs != null && jobs.Count() > 0)
+                countJob = jobs.Count();
             ViewBag.countJob = countJob;
             ViewBag.jobs = jobs;
             return View();
@@ -45,7 +46,12 @@ namespace CareerProject.Controllers
         public ActionResult FindMatchJob()
         {
             var session = (UserLogin)Session[CommonConstant.USER_SESSION];
-            ViewBag.jobs = jobService.getListMatchedJob(session.UserID);
+            int countJob = 0;
+            var jobs = jobService.getListMatchedJob(session.UserID);
+            ViewBag.jobs = jobs;
+            if (jobs != null && jobs.Count() > 0)
+                countJob = jobs.Count();
+            ViewBag.countJobs = countJob;
             return View();
         }
 

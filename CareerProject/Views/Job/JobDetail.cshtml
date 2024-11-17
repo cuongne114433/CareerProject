@@ -52,6 +52,15 @@
                         <div class="post-details1 mb-50">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
+                                <h4>Job Details</h4>
+                            </div>
+                            <div>
+                                @Html.Raw(ViewBag.jobDetail.Detail)
+                            </div>
+                        </div>
+                        <div class="post-details1 mb-50">
+                            <!-- Small Section Tittle -->
+                            <div class="small-section-tittle">
                                 <h4>Job Description</h4>
                             </div>
                             <div>
@@ -100,31 +109,44 @@
                                 }
                                 else
                                 {
-                                    <span>ViewBag.jobDetail.Offer</span>
+                                    <span>@ViewBag.jobDetail.Offer</span>
                                 }
                             </li>
-                            <li>Limit date : <span>@ViewBag.jobDetail.LimitDate</span></li>
+                            <li>Limit date : <span>@ViewBag.jobDetail.LimitDate.ToString("dd/MM/yyyy")</span></li>
                         </ul>
-                        @if (ViewBag.countApplied == 0)
+                        @if (Convert.ToDateTime(ViewBag.jobDetail.LimitDate).Date > DateTime.Now.Date)
                         {
-                            <div class="apply-btn2">
-                                <a href="#" class="btn" data-toggle="modal" data-target="#exampleModal">Apply Now</a>
-                            </div>
-                        }
-                        else if (ViewBag.countApplied == 1)
-                        {
+                            if (ViewBag.countApplied == 0)
+                            {
+                                <div class="apply-btn2">
+                                    <a href="#" class="btn" data-toggle="modal" data-target="#exampleModal">Apply Now</a>
+                                </div>
+                            }
+                            else if (ViewBag.countApplied == 1)
+                            {
 
 
-                            <div class="apply-btn2">
-                                <a href="#" class="btn" data-toggle="modal" data-target="#exampleModal">Apply Again</a>
-                            </div>
+                                <div class="apply-btn2">
+                                    <a href="#" class="btn" data-toggle="modal" data-target="#exampleModal">Apply Again</a>
+                                </div>
+                            }
+                            else
+                            {
+
+                                <div class="footer" style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+
+                                    <label class="submit-btn" value="Apply" disabled type="submit" style=" padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Applied</label>
+                                </div>
+                            }
+
+
+
                         }
                         else
                         {
-
                             <div class="footer" style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
 
-                                <label class="submit-btn" value="Apply" disabled type="submit" style=" padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;" >Applied</label>
+                                <label class="submit-btn" value="Apply" disabled type="submit" style=" padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Job Out Of Date</label>
                             </div>
                         }
 

@@ -114,7 +114,7 @@
                                 </div>
                             </div>
                             <div class="items-link f-right">
-                                <a href="job_details.html">@item.Type</a>
+                                <a href="@Url.Action("JobDetail", "Job", new {id = item.ID})">@item.Type</a>
                                 <span>@item.CreationDate.Date.ToString("dd/MM/yyyy")</span>
                             </div>
                         </div>
@@ -178,61 +178,60 @@
     </div>
     <!-- How  Apply Process End-->
     <!-- Testimonial Start -->
-    <div class="testimonial-area testimonial-padding">
-        <div class="container">
-            <!-- Testimonial contents -->
-            <div class="row d-flex justify-content-center">
-                <div class="col-xl-8 col-lg-8 col-md-10">
-                    <div class="h1-testimonial-active dot-style">
-                        <!-- Single Testimonial -->
-                        <div class="single-testimonial text-center">
-                            <!-- Testimonial Content -->
-                            <div class="testimonial-caption ">
-                                <!-- founder -->
-                                <div class="testimonial-founder  ">
-                                    <div class="founder-img mb-30">
-                                        <img src="~/Assets/img/testmonial/testimonial-founder.png" alt="">
-                                        <span>Margaret Lawson</span>
-                                        <p>Creative Director</p>
-                                    </div>
-                                </div>
-                                <div class="testimonial-top-cap">
-                                    <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>
+   <div class="testimonial-area testimonial-padding">
+    <div class="container">
+        <!-- Testimonial contents -->
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-8 col-lg-8 col-md-10">
+                <div class="h1-testimonial-active dot-style">
+                    <!-- Single Testimonial -->
+                    <div class="single-testimonial text-center">
+                        <!-- Testimonial Content -->
+                        <div class="testimonial-caption">
+                            <!-- founder -->
+                            <div class="testimonial-founder">
+                                <div class="founder-img mb-30">
+                                    <img src="~/Assets/img/testmonial/quocninh.jpg" alt="Quốc Ninh">
+                                    <span>Quốc Ninh</span>
+                                    <p>Giám Đốc Sáng Tạo</p>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Single Testimonial -->
-                        <div class="single-testimonial text-center">
-                            <!-- Testimonial Content -->
-                            <div class="testimonial-caption ">
-                                <!-- founder -->
-                                <div class="testimonial-founder  ">
-                                    <div class="founder-img mb-30">
-                                        <img src="~/Assets/img/testmonial/testimonial-founder.png" alt="">
-                                        <span>Margaret Lawson</span>
-                                        <p>Creative Director</p>
-                                    </div>
-                                </div>
-                                <div class="testimonial-top-cap">
-                                    <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>
-                                </div>
+                            <div class="testimonial-top-cap">
+                                <p>“Tôi cam kết mang đến trải nghiệm tốt nhất cho cả nhà tuyển dụng và người tìm việc, đảm bảo rằng họ có thể kết nối một cách dễ dàng, nhanh chóng và hiệu quả trên nền tảng của chúng tôi.”</p>
                             </div>
                         </div>
-                        <!-- Single Testimonial -->
-                        <div class="single-testimonial text-center">
-                            <!-- Testimonial Content -->
-                            <div class="testimonial-caption ">
-                                <!-- founder -->
-                                <div class="testimonial-founder  ">
-                                    <div class="founder-img mb-30">
-                                        <img src="~/Assets/img/testmonial/testimonial-founder.png" alt="">
-                                        <span>Margaret Lawson</span>
-                                        <p>Creative Director</p>
-                                    </div>
+                    </div>
+                    <!-- Single Testimonial -->
+                    <div class="single-testimonial text-center">
+                        <!-- Testimonial Content -->
+                        <div class="testimonial-caption">
+                            <!-- founder -->
+                            <div class="testimonial-founder">
+                                <div class="founder-img mb-30">
+                                    <img src="~/Assets/img/testmonial/quocninh.jpg" alt="Quốc Ninh">
+                                    <span>Quốc Ninh</span>
+                                    <p>Chuyên Gia Hỗ Trợ Ứng Viên</p>
                                 </div>
-                                <div class="testimonial-top-cap">
-                                    <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>
+                            </div>
+                            <div class="testimonial-top-cap">
+                                <p>“Chúng tôi hiểu rằng mỗi ứng viên đều có câu chuyện riêng và cần một cơ hội phù hợp. Tôi luôn sẵn sàng hỗ trợ để bạn tìm được công việc lý tưởng và phát triển sự nghiệp bền vững.”</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Testimonial -->
+                    <div class="single-testimonial text-center">
+                        <!-- Testimonial Content -->
+                        <div class="testimonial-caption">
+                            <!-- founder -->
+                            <div class="testimonial-founder">
+                                <div class="founder-img mb-30">
+                                    <img src="~/Assets/img/testmonial/quocninh.jpg" alt="Quốc Ninh">
+                                    <span>Quốc Ninh</span>
+                                    <p>Chuyên Gia Hỗ Trợ Nhà Tuyển Dụng</p>
                                 </div>
+                            </div>
+                            <div class="testimonial-top-cap">
+                                <p>“Đội ngũ chúng tôi luôn lắng nghe và hiểu rõ nhu cầu của nhà tuyển dụng để giúp bạn tìm được ứng viên chất lượng nhất, phù hợp nhất cho sự phát triển doanh nghiệp.”</p>
                             </div>
                         </div>
                     </div>
@@ -240,6 +239,8 @@
             </div>
         </div>
     </div>
+</div>
+
     <!-- Testimonial End -->
     <!-- Support Company Start-->
     

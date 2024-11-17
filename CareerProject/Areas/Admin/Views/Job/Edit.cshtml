@@ -33,7 +33,12 @@
 
                 <div class="form-group">
                     <label for="requirement">Requirement</label>
-                    <textarea class="form-control form-control-rounded" id="description" name="description" placeholder="Enter job description" required>@ViewBag.info.Description</textarea>
+                    <textarea class="form-control form-control-rounded" id="requirement" name="requirement" placeholder="Enter job Requirement" required>@ViewBag.info.Requirement</textarea>
+                </div>
+                <script>CKEDITOR.replace("requirement");</script>
+                <div class="form-group">
+                    <label for="requirement">Description</label>
+                    <textarea class="form-control form-control-rounded" id="description" name="description" placeholder="Enter job Description" required>@ViewBag.info.Description</textarea>
                 </div>
                 <script>CKEDITOR.replace("description");</script>
 

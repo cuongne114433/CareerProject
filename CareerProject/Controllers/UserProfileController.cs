@@ -38,6 +38,9 @@ namespace CareerProject.Controllers
 
         public ActionResult JobApplied()
         {
+            var session = (UserLogin)Session[CommonConstant.USER_SESSION];
+            idLogin = session.UserID;
+            idUser = idLogin;
             ViewBag.listJobApplied = userService.GetListAppliedJob(idLogin);
             return View();
         }
