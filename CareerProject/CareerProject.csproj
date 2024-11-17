@@ -282,6 +282,7 @@
     <Compile Include="Areas\Admin\Controllers\CompanyController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\JobController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TestGoogleController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\ApplyService.cs" />
@@ -290,6 +291,7 @@
     <Compile Include="Areas\Admin\Models\CVService.cs" />
     <Compile Include="Areas\Admin\Models\GoogleProfileModel.cs" />
     <Compile Include="Areas\Admin\Models\JobService.cs" />
+    <Compile Include="Areas\Admin\Models\NewsService.cs" />
     <Compile Include="Areas\Admin\Models\Startup.cs" />
     <Compile Include="Areas\Admin\Models\UserService.cs" />
     <Compile Include="Common\CommonConstant.cs" />
@@ -297,6 +299,7 @@
     <Compile Include="Controllers\AuthenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -315,6 +318,7 @@
     <Compile Include="Models\DTO\tbl_CV.cs" />
     <Compile Include="Models\DTO\tbl_Job.cs" />
     <Compile Include="Models\DTO\tbl_User.cs" />
+    <Compile Include="Models\DTO\tlb_news.cs" />
     <Compile Include="Models\Service\AuthenService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1594,6 +1598,9 @@
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
     <Content Include="Areas\Admin\Views\Home\AdminIndex.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
     <None Include="DataSet1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -1634,6 +1641,9 @@
     <Content Include="Views\UserProfile\CV.cshtml" />
     <Content Include="Views\UserProfile\JobApplied.cshtml" />
     <Content Include="Views\Job\FindMatchJob.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
