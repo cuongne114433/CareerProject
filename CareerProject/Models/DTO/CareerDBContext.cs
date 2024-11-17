@@ -8,7 +8,7 @@ namespace CareerProject.Models.DTO
     public partial class CareerDBContext : DbContext
     {
         public CareerDBContext()
-            : base("name=CareerDBContext2")
+            : base("name=CareerDBContext3")
         {
         }
 
@@ -19,6 +19,7 @@ namespace CareerProject.Models.DTO
         public virtual DbSet<tbl_CV> tbl_CV { get; set; }
         public virtual DbSet<tbl_Job> tbl_Job { get; set; }
         public virtual DbSet<tbl_User> tbl_User { get; set; }
+        public virtual DbSet<tlb_news> tlb_news { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

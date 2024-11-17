@@ -102,10 +102,10 @@
                         <div class="single-job-items mb-30" style="border:1px #808080 solid">
                             <div class="job-items">
                                 <div class="company-img">
-                                    <a href="job_details.html"><img style="width:70px; height: 70px" src="~/Img/@item.tbl_Company.Avt" alt=""></a>
+                                    <a href="@Url.Action("JobDetail", "Job", new {id = item.ID})"><img style="width:70px; height: 70px" src="~/Img/@item.tbl_Company.Avt" alt=""></a>
                                 </div>
                                 <div class="job-tittle">
-                                    <a href="job_details.html"><h4>@item.Name</h4></a>
+                                    <a href="@Url.Action("JobDetail", "Job", new {id = item.ID})"><h4>@item.Name</h4></a>
                                     <ul>
                                         <li>@item.tbl_Company.Name</li>
                                         <li><i class="fas fa-map-marker-alt"></i>@item.Location</li>

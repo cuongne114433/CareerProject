@@ -36,6 +36,10 @@ namespace CareerProject.Controllers
         public ActionResult JobDetail(long id)
         {
             var session = (UserLogin)Session[CommonConstant.USER_SESSION];
+            if(session==null)
+            {
+                return RedirectToAction("Login", "Authen");
+            }
             idJob = id;
             ViewBag.jobDetail = jobService.getJob(id);
             ViewBag.cvs = cVService.GetAllCV(session.UserID);

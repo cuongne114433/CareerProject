@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+
+    /* Basic Reset */
+   .body, h1, p {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+   .body {
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    /* News Detail Container */
+    .news-detail-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Header Section */
+    .news-header {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .news-title {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .news-meta {
+        font-size: 0.9rem;
+        color: #777;
+    }
+
+    /* Image Section */
+    .news-image {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .responsive-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Content Section */
+    .news-content p {
+        margin-bottom: 15px;
+        font-size: 1rem;
+        text-align: justify;
+    }
+
+</style>
+
+<div class="body">
+    <div class="news-detail-container">
+        <div class="news-header">
+            <h1 class="news-title">@ViewBag.newDetails.Title</h1>
+            <p class="news-meta">Published on <span class="news-date">@ViewBag.newDetails.CreationDate</span></p>
+        </div>
+        <div class="news-image">
+            <img src="~/Img/@ViewBag.newDetails.Image" alt="News Image" class="responsive-img">
+        </div>
+        <div class="news-content">
+            @Html.Raw(ViewBag.newDetails.Content)
+        </div>
+    </div>
+</div>
