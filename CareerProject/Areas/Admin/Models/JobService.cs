@@ -15,7 +15,7 @@ namespace CareerProject.Areas.Admin.Models
         }
         public List<tbl_Job> getListJob()
         {
-            return db.tbl_Job.ToList();
+            return db.tbl_Job.OrderByDescending(x => x.ID).ToList();
         }
 
         public List<tbl_Job> getListMatchedJob(long idUser)

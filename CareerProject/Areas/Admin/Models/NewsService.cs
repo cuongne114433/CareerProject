@@ -19,7 +19,7 @@ namespace CareerProject.Areas.Admin.Models
         // Get all news
         public List<tlb_news> GetAllNews()
         {
-            return db.tlb_news.ToList();
+            return db.tlb_news.OrderByDescending(x => x.IDnews).ToList();
         }
 
         // Get a specific news item by ID

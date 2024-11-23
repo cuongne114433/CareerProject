@@ -84,7 +84,7 @@ namespace CareerProject.Controllers
         [HttpPost]
         public ActionResult Login(string email, string password, string company)
         {
-            if(email=="nguyenvanx@gmail.com" && password == "123456")
+            if(email== "tqninh.work@gmail.com" && password == "123456")
             {
                 var userSession = new UserLogin();
                 userSession.Mail = email;

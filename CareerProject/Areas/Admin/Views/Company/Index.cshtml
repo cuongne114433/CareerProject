@@ -27,7 +27,7 @@
     <tbody>
         @foreach (var item in ViewBag.companies)
         {
-            if (item.CreatedDate.Date.AddDays(10) >  DateTime.Now.Date)
+            if (item.CreatedDate.Date.AddDays(2) >  DateTime.Now.Date)
             {
                 <tr style="background-color:#99b64f">
                     <th scope="row" style="color:#ff0000">@item.ID - New</th>
