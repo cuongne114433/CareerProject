@@ -14,6 +14,11 @@ namespace CareerProject.Models.Service
 
         public bool signUpCompany(string name, string decription, string Avt, string phoneNumber, string location, string email, string passWord)
         {
+            var isExistedAccount = db.tbl_Company.Where(x => x.Email.Trim().ToLower() == email.ToLower()).ToList();
+            if (isExistedAccount != null && isExistedAccount.Count() > 0)
+            {
+                return false;
+            }
             try
             {
                 tbl_Company company = new tbl_Company();
@@ -38,6 +43,11 @@ namespace CareerProject.Models.Service
 
         public bool signUpUser(string name, DateTime dob, string major, string jobCity, string profileUser, string skill, float expectedSalary, int experiences, string position, string email, string password)
         {
+            var isExistedAccount = db.tbl_User.Where(x=>x.Email.Trim().ToLower() == email.ToLower()).ToList();
+            if(isExistedAccount != null && isExistedAccount.Count() > 0)
+            {
+                return false;
+            }
             try
             {
                 tbl_User user = new tbl_User();

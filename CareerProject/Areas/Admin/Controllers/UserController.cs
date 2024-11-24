@@ -59,12 +59,12 @@ namespace CareerProject.Areas.Admin.Controllers
         }
 
         // Remove a user (AJAX - JSON result)
-        public JsonResult Remove(long id)
+        public JsonResult Remove(long id, string _status)
         {
             var status = false;
             try
             {
-                if (service.DeleteUser(id))
+                if (service.DeleteUser(id, _status))
                 {
                     status = true;
                 }

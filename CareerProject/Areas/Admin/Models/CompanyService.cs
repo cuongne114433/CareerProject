@@ -39,7 +39,8 @@ namespace CareerProject.Areas.Admin.Models
                     Avt = avt,
                     PhoneNumber = phoneNumber,
                     Email = email,
-                    Location = location
+                    Location = location,
+                    status = "Active"
                 };
 
                 db.tbl_Company.Add(newCompany); // Add the new company to the database context
@@ -56,14 +57,14 @@ namespace CareerProject.Areas.Admin.Models
         }
 
         // Delete a company by ID
-        public bool DeleteCompany(long? id)
+        public bool DeleteCompany(long? id, string status)
         {
             try
             {
                 tbl_Company company = db.tbl_Company.Find(id);
                 if (company != null)
                 {
-                    db.tbl_Company.Remove(company);
+                   company.status = status;
                     db.SaveChanges();
                     return true;
                 }
@@ -90,6 +91,7 @@ namespace CareerProject.Areas.Admin.Models
                     company.PhoneNumber = phoneNumber;
                     company.Email = email;
                     company.Location = location;
+
 
                     db.SaveChanges();
                     return true;

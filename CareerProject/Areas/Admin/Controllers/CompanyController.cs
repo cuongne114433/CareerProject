@@ -87,12 +87,12 @@ namespace CareerProject.Areas.Admin.Controllers
         }
 
         // Remove a company (AJAX - JSON result)
-        public JsonResult Remove(long id)
+        public JsonResult Remove(long id, string _status)
         {
             var status = false;
             try
             {
-                if (service.DeleteCompany(id))
+                if (service.DeleteCompany(id, _status))
                 {
                     status = true;
                 }

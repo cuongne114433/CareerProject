@@ -8,7 +8,7 @@ namespace CareerProject.Models.DTO
     public partial class CareerDBContext : DbContext
     {
         public CareerDBContext()
-            : base("name=CareerDBContext3")
+            : base("name=CareerDBContext4")
         {
         }
 
@@ -50,6 +50,11 @@ namespace CareerProject.Models.DTO
                 .IsUnicode(false);
 
             modelBuilder.Entity<tbl_Company>()
+                .Property(e => e.status)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<tbl_Company>()
                 .HasMany(e => e.tbl_Job)
                 .WithRequired(e => e.tbl_Company)
                 .HasForeignKey(e => e.IDCompany);
@@ -70,6 +75,11 @@ namespace CareerProject.Models.DTO
 
             modelBuilder.Entity<tbl_User>()
                 .Property(e => e.PassWord)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<tbl_User>()
+                .Property(e => e.status)
                 .IsFixedLength()
                 .IsUnicode(false);
 

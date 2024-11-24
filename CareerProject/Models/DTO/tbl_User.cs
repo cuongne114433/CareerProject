@@ -49,6 +49,9 @@ namespace CareerProject.Models.DTO
         [StringLength(100)]
         public string PassWord { get; set; }
 
+        [StringLength(50)]
+        public string status { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_ApplyJob> tbl_ApplyJob { get; set; }
 

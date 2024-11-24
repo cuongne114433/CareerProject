@@ -130,7 +130,6 @@
                                     <div class="count-job mb-35">
                                         <span>@ViewBag.countJob Jobs found</span>
                                         <!-- Select job items start -->
-                                       
                                         <!--  Select job items End-->
                                     </div>
                                 </div>
@@ -169,9 +168,15 @@
         </div>
     </div>
     <!-- Job List Area End -->
-    <!--Pagination Start  -->
-    
-    <!--Pagination End  -->
+    <!--Pagination Start-->
+    <div class="pagination-area pt-20">
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <!-- Pagination items will be dynamically generated -->
+            </ul>
+        </nav>
+    </div>
+    <!--Pagination End-->
 
 </main>
 <script>
@@ -233,5 +238,78 @@
 
         // Initial filter application on page load
         applyFilters();
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const jobItems = Array.from(document.querySelectorAll('.single-job-items'));
+        const itemsPerPage = 5; // Define how many items per page
+        let currentPage = 1;
+
+        const paginationContainer = document.querySelector('.pagination');
+
+        function renderJobs() {
+            // Calculate start and end index for the current page
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+
+            // Show only the jobs within the current page range
+            jobItems.forEach((job, index) => {
+                if (index >= start && index < end) {
+                    job.style.display = ''; // Show
+                } else {
+                    job.style.display = 'none'; // Hide
+                }
+            });
+
+            renderPagination();
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(jobItems.length / itemsPerPage);
+            paginationContainer.innerHTML = ''; // Clear previous pagination
+
+            // Previous button
+            const prevLi = document.createElement('li');
+            prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+            prevLi.innerHTML = `<a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>`;
+            prevLi.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderJobs();
+                }
+            });
+            paginationContainer.appendChild(prevLi);
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                const li = document.createElement('li');
+                li.className = `page-item ${i === currentPage ? 'active' : ''}`;
+                li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+                li.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    currentPage = i;
+                    renderJobs();
+                });
+                paginationContainer.appendChild(li);
+            }
+
+            // Next button
+            const nextLi = document.createElement('li');
+            nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+            nextLi.innerHTML = `<a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>`;
+            nextLi.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderJobs();
+                }
+            });
+            paginationContainer.appendChild(nextLi);
+        }
+
+        // Initial render
+        renderJobs();
     });
 </script>

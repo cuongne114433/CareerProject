@@ -63,6 +63,15 @@
                 </label>
                 <input type="password" id="password" name="password" class="cs-input" placeholder="Enter password" maxlength="50" required>
             </div>
+            @if (ViewBag.signup != null)
+            {
+                <div class="cs-input-group">
+                    <label style="color: red">
+                        @ViewBag.signup
+                    </label>
+                </div>
+            }
+
             <!-- Submit Button -->
             <div class="cs-input-group">
                 <button type="submit" class="cs-submit-btn">Register Company</button>

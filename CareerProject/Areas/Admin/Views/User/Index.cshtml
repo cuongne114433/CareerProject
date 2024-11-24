@@ -24,6 +24,7 @@
             <th scope="col">Experiences</th>
             <th scope="col">Position</th>
             <th scope="col">Email</th>
+            <th scope="col">Status</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -51,9 +52,17 @@
                 <td>@item.Experiences</td>
                 <td>@item.Position</td>
                 <td>@item.Email</td>
+                <td>@item.status</td>
                 <td>
                     @*<a href="@Url.Action("Edit", "User", new { id = item.ID })" class="btn btn-light btn-round px-5"><i class="icon-pencil"></i> Edit</a>*@
-                    <button onclick="removeUser(@item.ID)" class="btn btn-sm btn-danger px-5">DELETE</button>
+                    @if (item.status.Trim() == "Active")
+                    {
+                        <button onclick="removeUser(@item.ID, 'Inactive')" class="btn btn-sm btn-danger px-5">Inactive</button>
+                    }
+                    @if (item.status.Trim() == "Inactive")
+                    {
+                        <button onclick="removeUser(@item.ID, 'Active')" class="btn btn-sm btn-danger px-5">Active</button>
+                    }
                 </td>
             </tr>
         } 
@@ -61,9 +70,9 @@
 </table>
 
 <script>
-    function removeUser(id) {
+    function removeUser(id, status) {
         if (confirm("Are you sure you want to delete the user with ID " + id + "?")) {
-            $.get("/User/Remove", { id: id }, function (data) {
+            $.get("/User/Remove", { id: id, _status: status }, function (data) {
                 if (data) {
                     alert("User has been deleted");
                     location.reload();

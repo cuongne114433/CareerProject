@@ -21,13 +21,14 @@
             <th scope="col">Phone Number</th>
             <th scope="col">Email</th>
             <th scope="col">Location</th>
+            <th scope="col">Status</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in ViewBag.companies)
         {
-            if (item.CreatedDate.Date.AddDays(2) >  DateTime.Now.Date)
+            if (item.CreatedDate.Date.AddDays(2) > DateTime.Now.Date)
             {
                 <tr style="background-color:#99b64f">
                     <th scope="row" style="color:#ff0000">@item.ID - New</th>
@@ -37,22 +38,32 @@
                     <td>@item.PhoneNumber</td>
                     <td>@item.Email</td>
                     <td>@item.Location</td>
+                    <td>@item.status</td>
                     <td>
                         @if (session.Role == "Admin")
                         {
                             <a href="@Url.Action("Index", "Job", new { idCompany = item.ID })" class="btn btn-light btn-round px-5"><i class="icon-pencil"></i> View Job</a>
+                            if (item.status.Trim() == "Active")
+                            {
+                                <button onclick="removeCompany(@item.ID, 'Inactive')" class="btn btn-sm btn-danger px-5">Inactive</button>
+                            }
+                            else
+                                if (item.status.Trim() == "Inactive")
+                            {
+                                <button onclick="removeCompany(@item.ID, 'Active')" class="btn btn-sm btn-danger px-5">Active</button>
+                            }
                         }
                         else
                         {
                             <a href="@Url.Action("Edit", "Company", new { id = item.ID })" class="btn btn-light btn-round px-5"><i class="icon-pencil"></i> Edit</a>
-                            <button onclick="removeCompany(@item.ID)" class="btn btn-sm btn-danger px-5">DELETE</button>
+
                         }
                     </td>
                 </tr>
             }
             else
             {
-                <tr >
+                <tr>
                     <th scope="row">@item.ID</th>
                     <td>@item.Name</td>
                     <td>@item.Description</td>
@@ -60,29 +71,39 @@
                     <td>@item.PhoneNumber</td>
                     <td>@item.Email</td>
                     <td>@item.Location</td>
+                    <td>@item.status</td>
                     <td>
                         @if (session.Role == "Admin")
                         {
                             <a href="@Url.Action("Index", "Job", new { idCompany = item.ID })" class="btn btn-light btn-round px-5"><i class="icon-pencil"></i> View Job</a>
+                            if (item.status.Trim() == "Active")
+                            {
+                                <button onclick="removeCompany(@item.ID, 'Inactive')" class="btn btn-sm btn-danger px-5">Inactive</button>
+                            }
+                            else
+                                if (item.status.Trim() == "Inactive")
+                            {
+                                <button onclick="removeCompany(@item.ID, 'Active')" class="btn btn-sm btn-danger px-5">Active</button>
+                            }
                         }
                         else
                         {
                             <a href="@Url.Action("Edit", "Company", new { id = item.ID })" class="btn btn-light btn-round px-5"><i class="icon-pencil"></i> Edit</a>
-                            <button onclick="removeCompany(@item.ID)" class="btn btn-sm btn-danger px-5">DELETE</button>
+
                         }
                     </td>
                 </tr>
-}
+            }
         }
     </tbody>
 </table>
 
 <script>
-    function removeCompany(id) {
+    function removeCompany(id, status) {
         if (confirm("Are you sure you want to delete the company with ID " + id + "?")) {
-            $.get("/Company/Remove", { id: id }, function (data) {
+            $.get("/Company/Remove", { id: id, _status: status }, function (data) {
                 if (data) {
-                    alert("Company has been deleted");
+                    alert("Company's statuc has been changed");
                     location.reload();
                 } else {
                     alert("Error deleting company");

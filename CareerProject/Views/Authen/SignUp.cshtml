@@ -113,6 +113,15 @@
                     <input type="checkbox" required> Tôi đã đọc và đồng ý với Điều khoản dịch vụ và Chính sách bảo mật
                 </label>
             </div>
+            @if (ViewBag.signup != null)
+            {
+                <div class="cs-input-group">
+                    <label style="color: red">
+                        @ViewBag.signup
+                    </label>
+                </div>
+            }
+
 
             <!-- Register Button -->
             <div class="cs-input-group">

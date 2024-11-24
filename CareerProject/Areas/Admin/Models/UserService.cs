@@ -44,7 +44,8 @@ namespace CareerProject.Areas.Admin.Models
                     Experiences = experiences,
                     Position = position,
                     Email = email,
-                    PassWord = password
+                    PassWord = password,
+                    status = "Active"
                 };
 
                 db.tbl_User.Add(newUser); // Add the new user to the database context
@@ -61,14 +62,14 @@ namespace CareerProject.Areas.Admin.Models
         }
 
         // Delete a user by ID
-        public bool DeleteUser(long? id)
+        public bool DeleteUser(long? id, string _status)
         {
             try
             {
                 tbl_User user = db.tbl_User.Find(id);
                 if (user != null)
                 {
-                    db.tbl_User.Remove(user);
+                    user.status = _status;
                     db.SaveChanges();
                     return true;
                 }
@@ -98,7 +99,6 @@ namespace CareerProject.Areas.Admin.Models
                     user.Expected = expected;
                     user.Experiences = experiences;
                     user.Position = position;
-                    user.Email = email;
 
                     db.SaveChanges();
                     return true;

@@ -56,6 +56,7 @@ namespace CareerProject.Controllers
                 user.Name = name;
                 user.Email = email;
                 user.Major = "None";
+                user.status = "Active";
                 db.tbl_User.Add(user);
                 db.SaveChanges();
             }
@@ -169,6 +170,7 @@ namespace CareerProject.Controllers
             }
             else
             {
+                ViewBag.signup = "Sign up failed, Your email already existed";
                 return View();
 
             }
@@ -210,6 +212,7 @@ namespace CareerProject.Controllers
             }
             else
             {
+                ViewBag.signup = "Sign up failed, Your email already existed";
                 return View(); // Return to the view with an error message
             }
         }
